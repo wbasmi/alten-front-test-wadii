@@ -1,0 +1,26 @@
+<div class="flex gap-2">
+  @if (containsProduct(product)) {
+    <p-inputNumber
+      [(ngModel)]="quantity"
+      buttonLayout="horizontal"
+      inputId="horizontal"
+      spinnerMode="horizontal"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      [step]="1"
+      [min]="0"
+      [max]="product.quantity"
+      [showButtons]="true"
+      (ngModelChange)="updateProductInCart()"
+    />
+
+  } @else {
+    <p-button
+      label="Ajouter au panier"
+      icon="pi pi-shopping-cart"
+      (click)="onAddToCart()"
+      class="w-full"
+    >
+    </p-button>
+  }
+</div>

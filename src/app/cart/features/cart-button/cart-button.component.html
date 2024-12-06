@@ -1,0 +1,12 @@
+<i
+  class="pi pi-shopping-cart p-text-secondary mr-2"
+   pBadge
+  style="font-size: 2rem"
+  value="{{cartCount()}}"
+  (click)="openCart()"></i>
+
+<p-dialog [(visible)]="isCartVisible"
+          [style]="{ width: '70vw' }"
+          header="Votre panier">
+  <app-cart-details></app-cart-details>
+</p-dialog>

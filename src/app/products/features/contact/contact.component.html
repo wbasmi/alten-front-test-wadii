@@ -1,0 +1,28 @@
+<p-dialog [visible]="true" (visibleChange)="onClose()" [style]="{ width: '50vw' }" header="Contact">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid p-grid">
+      <div class="p-field mb-2">
+        <label for="email">Email</label>
+        <div class="p-input-filled">
+          <input id="email" type="text" pInputText formControlName="email"/>
+        </div>
+      </div>
+      <div *ngIf="email?.invalid && email?.touched" class="p-error">
+        <small *ngIf="email?.errors?.required">Email est obligatoire.</small>
+        <small *ngIf="email?.errors?.email">Email est invalide.</small>
+      </div>
+      <div class="p-field">
+        <label for="message">Message</label>
+        <div class="p-input-filled">
+          <textarea id="message" pInputTextarea formControlName="message"></textarea>
+        </div>
+        <div *ngIf="message?.invalid && message?.touched" class="p-error">
+          <small *ngIf="message?.errors?.required">Message est obligatoire.</small>
+          <small *ngIf="message?.errors?.minlength">Message doit être de taille minimum de 300.</small>
+        </div>
+      </div>
+      <button pButton type="submit" label="Submit"></button>
+    </div>
+  </form>
+</p-dialog>
+<p-toast></p-toast>
